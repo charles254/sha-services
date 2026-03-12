@@ -1,0 +1,69 @@
+// This is your Prisma schema file for the SHA Online Services platform.
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String
+  role      Role     @default(CLIENT)
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  description String
+  price       Float
+  orders      Order[]
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id           String      @id @default(uuid())
+  userId       String
+  serviceId    String
+  status       OrderStatus @default(PENDING)
+  notes        String?     // JSON: service-specific data (sha pin, old/new phone, etc.)
+  finalPrice   Float?
+  checkoutId   String?     @unique
+  mpesaReceipt String?
+  documents    Document[]
+  user         User        @relation(fields: [userId], references: [id])
+  service      Service     @relation(fields: [serviceId], references: [id])
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Document {
+  id       String @id @default(uuid())
+  orderId  String
+  fileUrl  String
+  fileType String // NATIONAL_ID, POLICE_ABSTRACT, BIRTH_CERT, MARRIAGE_CERT, CERT_OF_INCORPORATION
+  order    Order  @relation(fields: [orderId], references: [id])
+}
+
+enum Role {
+  CLIENT
+  AGENT
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  COMPLETED
+  REJECTED
+}
