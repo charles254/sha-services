@@ -1,6 +1,6 @@
 /**
- * SHA Online Services — M-Pesa Daraja Library
- * Adapted from the KRA project. Supports sandbox & production modes.
+ * SHA Online Cyber Services — M-Pesa Daraja Library
+ * Supports sandbox & production modes.
  */
 
 const MPESA_ENV = process.env.MPESA_ENV || 'sandbox';
@@ -8,9 +8,19 @@ const BASE_URL  = MPESA_ENV === 'production'
   ? 'https://api.safaricom.co.ke'
   : 'https://sandbox.safaricom.co.ke';
 
-const SHORTCODE       = process.env.MPESA_SHORTCODE || '174379';
-const PASSKEY         = process.env.MPESA_PASSKEY   || 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-const CALLBACK_URL    = process.env.MPESA_CALLBACK_URL || 'https://your-domain.co.ke/api/mpesa/callback';
+function getShortcode(): string {
+  const code = process.env.MPESA_SHORTCODE;
+  if (!code) throw new Error('MPESA_SHORTCODE env var is required.');
+  return code;
+}
+
+function getPasskey(): string {
+  const key = process.env.MPESA_PASSKEY;
+  if (!key) throw new Error('MPESA_PASSKEY env var is required.');
+  return key;
+}
+
+const CALLBACK_URL    = process.env.MPESA_CALLBACK_URL || '';
 const CONSUMER_KEY    = process.env.MPESA_CONSUMER_KEY    || '';
 const CONSUMER_SECRET = process.env.MPESA_CONSUMER_SECRET || '';
 
@@ -57,20 +67,27 @@ export async function initiateSTKPush(
 ): Promise<{ success: boolean; checkoutRequestId?: string; customerMessage?: string; error?: string }> {
   const formattedPhone = formatPhone(phone);
   const timestamp      = new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 14);
-  const password       = Buffer.from(`${SHORTCODE}${PASSKEY}${timestamp}`).toString('base64');
-  const accountRef     = orderId.slice(0, 12).replace(/[^a-zA-Z0-9]/g, '');
 
   try {
     const token = await generateToken();
 
     // Sandbox / mock mode — simulate a successful push
     if (token === 'mock-token') {
-      console.log(`[mpesa] Sandbox STK Push → ${formattedPhone} | Ksh ${amount} | Order ${orderId}`);
+      console.log(`[mpesa] Sandbox STK Push -> ${formattedPhone} | Ksh ${amount} | Order ${orderId}`);
       return {
         success:           true,
         checkoutRequestId: `ws_CO_${Date.now()}`,
         customerMessage:   'Sandbox mode: payment will be auto-confirmed in a few seconds.',
       };
+    }
+
+    const shortcode = getShortcode();
+    const passkey = getPasskey();
+    const password = Buffer.from(`${shortcode}${passkey}${timestamp}`).toString('base64');
+    const accountRef = orderId.slice(0, 12).replace(/[^a-zA-Z0-9]/g, '');
+
+    if (!CALLBACK_URL) {
+      throw new Error('MPESA_CALLBACK_URL env var is required for production.');
     }
 
     const res = await fetch(`${BASE_URL}/mpesa/stkpush/v1/processrequest`, {
@@ -80,13 +97,13 @@ export async function initiateSTKPush(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        BusinessShortCode: SHORTCODE,
+        BusinessShortCode: shortcode,
         Password:          password,
         Timestamp:         timestamp,
         TransactionType:   'CustomerPayBillOnline',
         Amount:            Math.round(amount),
         PartyA:            formattedPhone,
-        PartyB:            SHORTCODE,
+        PartyB:            shortcode,
         PhoneNumber:       formattedPhone,
         CallBackURL:       CALLBACK_URL,
         AccountReference:  accountRef,

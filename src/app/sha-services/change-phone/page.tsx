@@ -134,7 +134,7 @@ export default function ChangePhonePage() {
             "description": "Professional assistance to update your registered Social Health Authority (SHA) phone number.",
             "provider": {
               "@type": "Organization",
-              "name": "SHA Online Services Kenya"
+              "name": "SHA Online Cyber Services Kenya"
             },
             "serviceType": "Government Document Update",
             "offers": {

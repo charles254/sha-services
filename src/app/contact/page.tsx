@@ -1,14 +1,51 @@
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Contact Us | SHA Online Services Support',
-  description: 'Need help with your SHA application? Contact our certified agents via WhatsApp, phone, or email. We are here to assist with your Social Health Authority needs.',
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | WhatsApp, Phone & Email Support',
+  description: 'Get help with your SHA request — reach our certified agents via WhatsApp (+254 719 628 275), email, or phone. Mon-Sat 8am-6pm. Average response time: 2 hours.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact SHA Online Cyber Services | Get Help Now',
+    description: 'Reach our SHA agents via WhatsApp, phone, or email. Mon-Sat 8am-6pm, avg response 2 hours.',
+    images: ['/og-image.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact SHA Online Cyber Services | Get Help Now',
+    description: 'Reach our SHA agents via WhatsApp, phone, or email. Mon-Sat 8am-6pm, avg response 2 hours.',
+  },
 };
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen mesh-bg grainy pt-32 pb-20 font-inter">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact SHA Online Cyber Services",
+            "url": "https://shaservices.co.ke/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "SHA Online Cyber Services Kenya",
+              "telephone": "+254-719-628-275",
+              "email": "support@shaservices.co.ke",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Upper Hill",
+                "addressLocality": "Nairobi",
+                "addressCountry": "KE"
+              },
+              "openingHours": "Mo-Sa 08:00-18:00"
+            }
+          })
+        }}
+      />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16 space-y-4">
           <div className="badge-green mx-auto w-fit">Help Center</div>
@@ -23,7 +60,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Contact Info */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="card p-8 bg-sha-900 text-white border-0">
+            <div className="bg-sha-900 rounded-[2.5rem] p-8 text-white border-0 shadow-2xl shadow-sha-900/30">
               <h3 className="text-2xl font-black mb-8">Direct Contact</h3>
               <div className="space-y-6">
                 <a href="https://wa.me/254719628275" className="flex items-start gap-4 group">

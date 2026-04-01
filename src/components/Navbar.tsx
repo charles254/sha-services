@@ -20,16 +20,16 @@ export default function Navbar() {
     <header className="fixed top-0 w-full z-50 bg-white/85 backdrop-blur-lg border-b border-sha-100/60 shadow-sm">
       <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-sha-700 rounded-xl flex items-center justify-center shadow-lg shadow-sha-900/20">
-            <ShieldCheck className="w-5 h-5 text-white" />
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 bg-sha-800 rounded-2xl flex items-center justify-center shadow-lg shadow-sha-900/40 border border-white/10 group-hover:scale-105 transition-transform">
+            <ShieldCheck className="w-6 h-6 text-gold-500" />
           </div>
           <div className="leading-none">
-            <span className="text-xl font-outfit font-black tracking-tight text-gray-900">
-              SHA<span className="text-sha-600">Online</span>
+            <span className="text-2xl font-outfit font-black tracking-tight text-gray-900">
+              SHA<span className="text-sha-600">Cyber</span>
             </span>
-            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-sha-600">
-              Services Kenya
+            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-sha-600/60 mt-0.5">
+              SHA Cyber Services
             </p>
           </div>
         </Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
             <button className="flex items-center gap-1 hover:text-sha-600 transition-colors uppercase tracking-widest text-[10px] font-black">
               Services <ChevronDown className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform" />
             </button>
-            {servOpen && (
+            {servOpen ? (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-64">
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 space-y-1">
                   {services.map((s) => (
@@ -55,7 +55,7 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
 
           <Link href="/track" className="hover:text-sha-600 transition-colors uppercase tracking-widest text-[10px] font-black">
@@ -93,7 +93,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      {open && (
+      {open ? (
         <div className="lg:hidden bg-white border-t border-gray-100 px-6 py-6 space-y-2 shadow-2xl">
           <p className="text-[9px] font-black uppercase tracking-widest text-sha-600 mb-3">Our Services</p>
           {services.map((s) => (
@@ -120,7 +120,7 @@ export default function Navbar() {
             Get Started Now
           </Link>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

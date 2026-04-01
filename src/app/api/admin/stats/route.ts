@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { isAdminAuthenticated } from '@/lib/auth';
 
 // GET /api/admin/stats — dashboard summary counts
 export async function GET(req: NextRequest) {
-  // Simple auth check
-  if (!req.cookies.get('sha_admin_authenticated')) {
+  if (!(await isAdminAuthenticated(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

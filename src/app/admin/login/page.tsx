@@ -95,7 +95,7 @@ export default function AdminLoginPage() {
         </div>
 
         <p className="text-center mt-6 text-[10px] text-sha-600 font-black uppercase tracking-widest">
-          SHA Online Services · Agent Access Only
+          SHA Online Cyber Services · Agent Access Only
         </p>
       </div>
     </main>

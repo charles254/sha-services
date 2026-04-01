@@ -106,10 +106,10 @@ export default function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "SHA Online Services",
+            "serviceType": "SHA Online Cyber Services",
             "provider": {
               "@type": "Organization",
-              "name": "SHA Online Services Kenya"
+              "name": "SHA Online Cyber Services Kenya"
             },
             "areaServed": {
               "@type": "Country",

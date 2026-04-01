@@ -37,7 +37,7 @@ export const SHA_SERVICES: Record<string, { slug: string; name: string; descript
 };
 
 /**
- * Upserts a user, finds/creates the service, creates an order and documents.
+ * Creates a user (or finds existing), finds/creates the service, creates an order and documents.
  * Fires ORDER_RECEIVED email + SMS notification immediately after order creation.
  * Returns the created order (with service + documents included).
  */
@@ -59,14 +59,15 @@ export async function createShaOrder({
   const serviceDef = SHA_SERVICES[serviceKey];
   if (!serviceDef) throw new Error(`Unknown service key: ${serviceKey}`);
 
-  // 1. Upsert user (find by email, update phone/name if changed)
-  const user = await prisma.user.upsert({
-    where:  { email },
-    create: { name, email, phone },
-    update: { name, phone },
-  });
+  // 1. Find or create user — do NOT overwrite existing user's name/phone via upsert
+  let user = await prisma.user.findUnique({ where: { email } });
+  if (!user) {
+    user = await prisma.user.create({
+      data: { name, email, phone },
+    });
+  }
 
-  // 2. Find or create the Service record
+  // 2. Ensure service exists
   const service = await prisma.service.upsert({
     where:  { slug: serviceDef.slug },
     create: {
@@ -96,7 +97,7 @@ export async function createShaOrder({
   Promise.allSettled([
     sendEmail(
       email,
-      `📋 Request Received — ${serviceDef.name}`,
+      `Request Received - ${serviceDef.name}`,
       EMAIL_TEMPLATES.ORDER_RECEIVED(name, order.id, serviceDef.name, serviceDef.price)
     ),
     sendSMS(

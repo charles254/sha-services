@@ -122,7 +122,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </svg>
           </button>
           <div>
-            <p className="font-black text-gray-900 text-sm">SHA Online Services</p>
+            <p className="font-black text-gray-900 text-sm">SHA Online Cyber Services</p>
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Agent Operations Dashboard</p>
           </div>
           <div className="ml-auto flex items-center gap-3">

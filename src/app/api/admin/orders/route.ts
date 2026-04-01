@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { isAdminAuthenticated } from '@/lib/auth';
 
 // GET /api/admin/orders?status=&service=&search=&page=&limit=
 export async function GET(req: NextRequest) {
-  if (!req.cookies.get('sha_admin_authenticated')) {
+  if (!(await isAdminAuthenticated(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

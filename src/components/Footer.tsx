@@ -22,19 +22,19 @@ export default function Footer() {
               </div>
               <div className="leading-none">
                 <span className="text-lg font-outfit font-black text-white">
-                  SHA<span className="text-sha-400">Online</span>
+                  SHA<span className="text-sha-400">Cyber</span>
                 </span>
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-sha-400">Services Kenya</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-sha-400">SHA Cyber Services</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed font-medium">
-              Certified agent services for the Social Health Authority (SHA) — Kenya&apos;s universal
+              Cyber SHA service agent for the Social Health Authority (SHA) — Kenya&apos;s universal
               health coverage body. Fast, secure, and KDPA compliant.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">f</a>
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">X</a>
-              <a href="#" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">in</a>
+              <a href="https://facebook.com/shaonlineservices" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">f</a>
+              <a href="https://x.com/shaonlineke" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">X</a>
+              <a href="https://linkedin.com/company/sha-online-services" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 bg-white/5 hover:bg-sha-600 rounded-xl flex items-center justify-center transition-colors text-gray-400 hover:text-white font-black text-xs">in</a>
             </div>
           </div>
 
@@ -102,13 +102,19 @@ export default function Footer() {
                 <div>
                   <p className="font-black text-xs uppercase tracking-widest text-sha-300 mb-2">Popular Locations</p>
                   <div className="flex flex-wrap gap-x-2 gap-y-1">
-                    {['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret'].map((city) => (
-                      <Link 
-                        key={city} 
-                        href={`/locations/${city.toLowerCase()}`} 
+                    {[
+                      { name: 'Nairobi', slug: 'westlands' },
+                      { name: 'Mombasa', slug: 'mvita' },
+                      { name: 'Kisumu',  slug: 'kisumu' },
+                      { name: 'Nakuru',  slug: 'nakuru' },
+                      { name: 'Eldoret', slug: 'eldoret' },
+                    ].map((city) => (
+                      <Link
+                        key={city.slug}
+                        href={`/locations/${city.slug}`}
                         className="text-[10px] text-gray-500 hover:text-white font-bold transition-colors"
                       >
-                        {city}
+                        {city.name}
                       </Link>
                     ))}
                   </div>
@@ -120,13 +126,17 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
-            © {new Date().getFullYear()} SHA Online Services Kenya. All rights reserved.
+            © {new Date().getFullYear()} SHA Cyber Services Kenya. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {['Privacy Policy', 'Terms of Service', 'KDPA Compliance'].map((l) => (
-              <a key={l} href="#" className="text-[10px] text-gray-500 hover:text-sha-400 font-bold uppercase tracking-widest transition-colors">
-                {l}
-              </a>
+            {[
+              { label: 'Privacy Policy', href: '/privacy' },
+              { label: 'Terms of Service', href: '/terms' },
+              { label: 'KDPA Compliance', href: '/kdpa-compliance' },
+            ].map((l) => (
+              <Link key={l.label} href={l.href} className="text-[10px] text-gray-500 hover:text-sha-400 font-bold uppercase tracking-widest transition-colors">
+                {l.label}
+              </Link>
             ))}
           </div>
         </div>

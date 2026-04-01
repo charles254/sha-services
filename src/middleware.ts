@@ -1,23 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminToken, COOKIE_NAME } from '@/lib/auth';
 
-const ADMIN_TOKEN = 'sha_admin_authenticated';
-
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Protect all /admin routes except /admin/login
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
-    const token = req.cookies.get(ADMIN_TOKEN);
-    if (!token?.value) {
+    const token = req.cookies.get(COOKIE_NAME)?.value;
+    const isValid = await verifyAdminToken(token);
+    if (!isValid) {
       const loginUrl = new URL('/admin/login', req.url);
       loginUrl.searchParams.set('from', pathname);
       return NextResponse.redirect(loginUrl);
     }
   }
 
-  return NextResponse.next();
+  // Add security headers to all responses
+  const response = NextResponse.next();
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+  return response;
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/api/:path*', '/((?!_next/static|_next/image|favicon.ico).*)'],
 };

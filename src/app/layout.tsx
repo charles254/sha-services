@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import SocialProof from "@/components/SocialProof";
+
+const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"));
+const SocialProof = dynamic(() => import("@/components/SocialProof"));
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 const inter  = Inter ({ subsets: ["latin"], variable: "--font-inter",  display: "swap" });
@@ -12,11 +14,11 @@ const inter  = Inter ({ subsets: ["latin"], variable: "--font-inter",  display: 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://shaservices.co.ke"),
   title: {
-    default: "SHA Online Services | Social Health Authority Kenya",
-    template: "%s | SHA Online Services Kenya",
+    default: "SHA Online Cyber Services | Fast, Certified & Secure",
+    template: "%s | SHA Cyber Services",
   },
   description:
-    "Fast, secure, and professional SHA (Social Health Authority) services for Kenyans online. Phone change, PIN registration, contribution statements, beneficiary updates and more.",
+    "Skip the queues — certified agents handle your SHA services online. Phone change, PIN registration, statements & more. Pay via M-Pesa. Fast & secure.",
   keywords: [
     "SHA Kenya online",
     "Social Health Authority services",
@@ -29,19 +31,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_KE",
-    siteName: "SHA Online Services Kenya",
-    title: "SHA Online Services | Social Health Authority Kenya",
+    siteName: "SHA Online Cyber Services Kenya",
+    title: "SHA Online Cyber Services | Skip the Queues, Go Online",
     description:
-      "Professional SHA services — phone updates, PIN registration, contribution records, and beneficiary changes. Handled by certified agents.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "SHA Online Services Kenya" }],
+      "Certified agents process your SHA requests online — phone updates, PIN registration, statements, beneficiary changes. 10,000+ requests handled. Pay via M-Pesa.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "SHA Online Cyber Services — Certified Agent Platform for Social Health Authority Kenya" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SHA Online Services Kenya",
-    description: "Fast, secure Social Health Authority services handled by certified agents.",
+    title: "SHA Online Cyber Services | Skip the Queues",
+    description: "Certified agents handle your SHA services online. Phone change, PIN registration, statements & more. 10,000+ requests processed.",
     images: ["/og-image.jpg"],
   },
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -54,7 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "SHA Online Services Kenya",
+              name: "SHA Online Cyber Services Kenya",
               url: "https://shaservices.co.ke",
               logo: "https://shaservices.co.ke/logo.png",
               description: "Certified SHA agent services for Kenyan citizens.",
