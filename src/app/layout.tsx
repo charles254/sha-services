@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     description: "Certified agents handle your SHA services online. Phone change, PIN registration, statements & more. 10,000+ requests processed.",
     images: ["/og-image.jpg"],
   },
+  verification: {
+    google: "F9kshl_Ly57IwOzG1oLS4Whh8bybSmGbP3GqlKske70",
+  },
   robots: { index: true, follow: true },
   alternates: {
     canonical: "/",
