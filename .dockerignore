@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+.claude
+.agents
+*.md
+*.log
+server_logs.txt
+test_db.js
+prisma/debug.prisma
+skills-lock.json

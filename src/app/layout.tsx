@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"));
-const SocialProof = dynamic(() => import("@/components/SocialProof"));
+import WhatsAppButton from "@/components/WhatsAppButton";
+import SocialProof from "@/components/SocialProof";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 const inter  = Inter ({ subsets: ["latin"], variable: "--font-inter",  display: "swap" });
