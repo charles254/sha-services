@@ -48,9 +48,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shaservices.co.ke" },
-              { "@type": "ListItem", "position": 2, "name": "SHA Services", "item": "https://shaservices.co.ke/#services" },
-              { "@type": "ListItem", "position": 3, "name": "Beneficiary Update", "item": "https://shaservices.co.ke/sha-services/beneficiary-update" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shacyberservices.com" },
+              { "@type": "ListItem", "position": 2, "name": "SHA Services", "item": "https://shacyberservices.com/#services" },
+              { "@type": "ListItem", "position": 3, "name": "Beneficiary Update", "item": "https://shacyberservices.com/sha-services/beneficiary-update" }
             ]
           })
         }}

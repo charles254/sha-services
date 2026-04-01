@@ -10,7 +10,7 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: 
 const inter  = Inter ({ subsets: ["latin"], variable: "--font-inter",  display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://shaservices.co.ke"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://shacyberservices.com"),
   title: {
     default: "SHA Online Cyber Services | Fast, Certified & Secure",
     template: "%s | SHA Cyber Services",
@@ -58,8 +58,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "SHA Online Cyber Services Kenya",
-              url: "https://shaservices.co.ke",
-              logo: "https://shaservices.co.ke/logo.png",
+              url: "https://shacyberservices.com",
+              logo: "https://shacyberservices.com/logo.png",
               description: "Certified SHA agent services for Kenyan citizens.",
               areaServed: "KE",
               contactPoint: {

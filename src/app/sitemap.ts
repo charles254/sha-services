@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { KENYAN_LOCATIONS } from '@/lib/locations';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://shaservices.co.ke';
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://shacyberservices.com';
 
   const services = [
     'change-phone',

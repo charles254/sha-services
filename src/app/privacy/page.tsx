@@ -84,7 +84,7 @@ export default function PrivacyPage() {
               <li>Receive your data in a portable format</li>
             </ul>
             <p className="text-gray-600 leading-relaxed mt-3">
-              To exercise these rights, contact us at <a href="mailto:support@shaservices.co.ke" className="text-sha-600 font-bold hover:underline">support@shaservices.co.ke</a>.
+              To exercise these rights, contact us at <a href="mailto:support@shacyberservices.com" className="text-sha-600 font-bold hover:underline">support@shacyberservices.com</a>.
             </p>
           </section>
 
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-black text-gray-900 mb-4">8. Contact Us</h2>
             <p className="text-gray-600 leading-relaxed">
-              For privacy-related inquiries, contact our Data Protection Officer at <a href="mailto:support@shaservices.co.ke" className="text-sha-600 font-bold hover:underline">support@shaservices.co.ke</a> or via WhatsApp at <a href="https://wa.me/254719628275" className="text-sha-600 font-bold hover:underline">+254 719 628 275</a>.
+              For privacy-related inquiries, contact our Data Protection Officer at <a href="mailto:support@shacyberservices.com" className="text-sha-600 font-bold hover:underline">support@shacyberservices.com</a> or via WhatsApp at <a href="https://wa.me/254719628275" className="text-sha-600 font-bold hover:underline">+254 719 628 275</a>.
             </p>
           </section>
         </div>

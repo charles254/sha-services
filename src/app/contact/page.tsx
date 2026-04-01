@@ -29,12 +29,12 @@ export default function ContactPage() {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             "name": "Contact SHA Online Cyber Services",
-            "url": "https://shaservices.co.ke/contact",
+            "url": "https://shacyberservices.com/contact",
             "mainEntity": {
               "@type": "Organization",
               "name": "SHA Online Cyber Services Kenya",
               "telephone": "+254-719-628-275",
-              "email": "support@shaservices.co.ke",
+              "email": "support@shacyberservices.com",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Upper Hill",
@@ -80,7 +80,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-black text-white">Email Support</p>
-                    <p className="text-sha-300 text-sm font-medium">support@shaservices.co.ke</p>
+                    <p className="text-sha-300 text-sm font-medium">support@shacyberservices.com</p>
                   </div>
                 </div>
 

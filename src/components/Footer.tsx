@@ -93,7 +93,7 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-sm text-gray-400">
                 <Mail className="w-4 h-4 text-sha-500 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-white">support@shaservices.co.ke</p>
+                  <p className="font-bold text-white">support@shacyberservices.com</p>
                   <p className="text-xs">Response within 2 hours</p>
                 </div>
               </li>

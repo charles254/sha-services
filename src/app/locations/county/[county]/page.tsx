@@ -62,9 +62,9 @@ export default async function CountyPage({ params }: Props) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shaservices.co.ke" },
-              { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://shaservices.co.ke/locations" },
-              { "@type": "ListItem", "position": 3, "name": countyName, "item": `https://shaservices.co.ke/locations/county/${county}` }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shacyberservices.com" },
+              { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://shacyberservices.com/locations" },
+              { "@type": "ListItem", "position": 3, "name": countyName, "item": `https://shacyberservices.com/locations/county/${county}` }
             ]
           })
         }}

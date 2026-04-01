@@ -88,7 +88,7 @@ export default async function LocationPage({ params }: Props) {
             "@type": "LocalBusiness",
             "name": `SHA Online Cyber Services ${location.name}`,
             "description": `Professional SHA services for residents of ${location.name}, ${location.region}. Phone change, PIN registration, contribution statements, beneficiary updates, and employer registration.`,
-            "url": `https://shaservices.co.ke/locations/${city}`,
+            "url": `https://shacyberservices.com/locations/${city}`,
             "telephone": "+254-719-628-275",
             "address": {
               "@type": "PostalAddress",
@@ -127,10 +127,10 @@ export default async function LocationPage({ params }: Props) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shaservices.co.ke" },
-              { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://shaservices.co.ke/locations" },
-              { "@type": "ListItem", "position": 3, "name": location.region, "item": `https://shaservices.co.ke/locations/county/${countySlug}` },
-              { "@type": "ListItem", "position": 4, "name": location.name, "item": `https://shaservices.co.ke/locations/${city}` }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shacyberservices.com" },
+              { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://shacyberservices.com/locations" },
+              { "@type": "ListItem", "position": 3, "name": location.region, "item": `https://shacyberservices.com/locations/county/${countySlug}` },
+              { "@type": "ListItem", "position": 4, "name": location.name, "item": `https://shacyberservices.com/locations/${city}` }
             ]
           })
         }}

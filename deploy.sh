@@ -5,7 +5,7 @@
 set -e
 
 APP_DIR="/opt/sha-services"
-DOMAIN="shaservices.co.ke"
+DOMAIN="shacyberservices.com"
 REPO="https://github.com/charles254/sha-services.git"
 
 echo "=== SHA Cyber Services Deployment ==="

@@ -1,0 +1,16 @@
+
+> sha-online-services@0.1.0 dev
+> next dev
+
+   Γû▓ Next.js 15.2.1
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.56.1:3000
+   - Environments: .env
+
+ Γ£ô Starting...
+ Γ£ô Ready in 4.5s
+ Γùï Compiling / ...
+ Γ£ô Compiled / in 7.2s (1478 modules)
+ HEAD / 200 in 8517ms
+ Γ£ô Compiled in 1471ms (681 modules)
+ GET / 200 in 477ms

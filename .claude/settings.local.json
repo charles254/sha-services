@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npx skills:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/locations)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/contact)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Size: %{size_download} | Time: %{time_total}s\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Size: %{size_download} | Time: %{time_total}s\\\\n\" http://localhost:3001/contact)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Size: %{size_download} | Time: %{time_total}s\\\\n\" http://localhost:3001/locations)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Size: %{size_download} | Time: %{time_total}s\\\\n\" http://localhost:3001/track)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Size: %{size_download} | Time: %{time_total}s\\\\n\" http://localhost:3001/sha-services/change-phone)",
+      "Bash(curl -s http://localhost:3001/)",
+      "Bash(curl -s http://localhost:3001/robots.txt)",
+      "Bash(curl -s http://localhost:3001/sitemap.xml)",
+      "Bash(curl -s http://localhost:3001/contact)",
+      "Bash(curl -s http://localhost:3001/track)",
+      "Bash(curl -s http://localhost:3001/sha-services/change-phone)",
+      "Bash(taskkill //F //IM node.exe)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://213.199.51.21:8000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://213.199.51.21:80)"
+    ]
+  }
+}

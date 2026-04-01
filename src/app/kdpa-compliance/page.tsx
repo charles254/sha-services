@@ -128,7 +128,7 @@ export default function KDPACompliancePage() {
           <section>
             <h2 className="text-2xl font-black text-gray-900 mb-4">How to Exercise Your Rights</h2>
             <p className="text-gray-600 leading-relaxed">
-              To exercise any of your data protection rights, send a request to our Data Protection Officer at <a href="mailto:support@shaservices.co.ke" className="text-sha-600 font-bold hover:underline">support@shaservices.co.ke</a> with the subject line &quot;KDPA Data Request.&quot; We will respond within <strong>30 days</strong> as required by law.
+              To exercise any of your data protection rights, send a request to our Data Protection Officer at <a href="mailto:support@shacyberservices.com" className="text-sha-600 font-bold hover:underline">support@shacyberservices.com</a> with the subject line &quot;KDPA Data Request.&quot; We will respond within <strong>30 days</strong> as required by law.
             </p>
           </section>
 
