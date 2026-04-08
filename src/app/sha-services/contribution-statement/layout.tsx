@@ -55,6 +55,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { q: 'What is an SHA contribution statement?', a: 'An SHA contribution statement is an official document showing your history of health insurance contributions to the Social Health Authority (formerly NHIF). It lists all payments made, including dates, amounts, and employer details where applicable. The document is stamped and authenticated by SHA.' },
+              { q: 'Will my statement include old NHIF contributions?', a: 'Yes. Your SHA contribution statement includes historical records dating back to the NHIF era. When NHIF transitioned to SHA, all contribution records were migrated. Your statement will show your complete contribution history across both systems.' },
+              { q: 'Is the contribution statement accepted by banks for loan applications?', a: 'Yes. SHA contribution statements are widely accepted by Kenyan banks and financial institutions as proof of employment and income stability. They are commonly required for mortgage applications, personal loans, and business financing.' },
+              { q: 'Can I request a statement for a specific date range?', a: 'Yes. When submitting your request, you can specify a custom date range for your contribution history. If no dates are provided, you will receive a complete statement covering your entire contribution history.' },
+              { q: 'How is the contribution statement delivered?', a: 'Your SHA contribution statement is delivered as an official PDF document directly to the email address you provide during the request. The PDF includes SHA authentication stamps and can be printed or forwarded digitally. Delivery takes approximately 1 hour.' },
+              { q: 'What if my contribution records show missing payments?', a: 'If your statement reveals gaps in contributions, this may indicate periods where your employer did not remit payments or where voluntary contributions were missed. You can use the statement as evidence to follow up with your employer or SHA directly.' },
+            ].map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+            })),
+          })
+        }}
+      />
       {children}
     </>
   );

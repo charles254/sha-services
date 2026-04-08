@@ -264,6 +264,29 @@ export default function EmployerRegistrationPage() {
             </form>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-4xl mx-auto mt-20">
+          <h2 className="text-3xl font-black text-gray-900 mb-8">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Is SHA employer registration mandatory in Kenya?', a: 'Yes. Under the Social Health Insurance Act 2023, all employers in Kenya are legally required to register with SHA and make monthly contributions on behalf of their employees. Non-compliance can result in penalties including fines and legal action. This applies to businesses of all sizes, from sole proprietors with employees to large corporations.' },
+              { q: 'What documents are required for employer registration?', a: 'You need your business registration certificate (CR12 for companies, or business name certificate), KRA PIN certificate, and the director\'s or owner\'s National ID. For companies, a board resolution authorizing the registration may also be required. All documents are uploaded securely through our platform.' },
+              { q: 'How do I set up SHA payroll deductions after registration?', a: 'Once registered, you receive an SHA employer code which you integrate into your payroll system. Monthly contributions are calculated as a percentage of each employee\'s gross salary. Our registration service includes basic payroll setup guidance. Most payroll software in Kenya (Sage, QuickBooks, WinPay) supports SHA deductions natively.' },
+              { q: 'What are the monthly SHA contribution rates for employers?', a: 'SHA contribution rates are set by the Social Health Insurance Act and are based on a percentage of each employee\'s gross salary. The employer is responsible for both the employer portion and deducting the employee portion from payroll. Rates may be updated periodically — our agents provide current rate schedules with your employer code.' },
+              { q: 'Can I register a new business that has not yet hired employees?', a: 'Yes. You can register your business with SHA in advance of hiring employees. This ensures you are compliant from day one when you begin employing staff. The registration establishes your employer account and code, which you activate when you add your first employee to the system.' },
+              { q: 'What happens if I miss SHA contribution deadlines?', a: 'Late SHA contributions incur penalties as stipulated by the Social Health Insurance Act. Persistent non-compliance may result in your employees losing access to SHA-covered health services and potential legal enforcement action against the employer. Setting up automated payroll deductions helps avoid missed deadlines.' },
+            ].map((faq, i) => (
+              <details key={i} className="group card !p-0 overflow-hidden">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-black text-gray-900 hover:text-sha-600 transition-colors">
+                  {faq.q}
+                  <ChevronRight className="w-5 h-5 text-gray-300 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 font-medium leading-relaxed border-t border-gray-50 pt-4">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );

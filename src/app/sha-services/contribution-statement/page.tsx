@@ -187,6 +187,29 @@ export default function ContributionStatementPage() {
             </form>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-4xl mx-auto mt-20">
+          <h2 className="text-3xl font-black text-gray-900 mb-8">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'What is an SHA contribution statement?', a: 'An SHA contribution statement is an official document showing your history of health insurance contributions to the Social Health Authority (formerly NHIF). It lists all payments made, including dates, amounts, and employer details where applicable. The document is stamped and authenticated by SHA.' },
+              { q: 'Will my statement include old NHIF contributions?', a: 'Yes. Your SHA contribution statement includes historical records dating back to the NHIF era. When NHIF transitioned to SHA, all contribution records were migrated. Your statement will show your complete contribution history across both systems.' },
+              { q: 'Is the contribution statement accepted by banks for loan applications?', a: 'Yes. SHA contribution statements are widely accepted by Kenyan banks and financial institutions as proof of employment and income stability. They are commonly required for mortgage applications, personal loans, and business financing. The official SHA stamp and authentication make it a recognized financial document.' },
+              { q: 'Can I request a statement for a specific date range?', a: 'Yes. When submitting your request, you can specify a custom date range for your contribution history. If no dates are provided, you will receive a complete statement covering your entire contribution history. Custom date ranges are useful for specific application requirements.' },
+              { q: 'How is the contribution statement delivered?', a: 'Your SHA contribution statement is delivered as an official PDF document directly to the email address you provide during the request. The PDF includes SHA authentication stamps and can be printed or forwarded digitally. Delivery takes approximately 1 hour from submission.' },
+              { q: 'What if my contribution records show missing payments?', a: 'If your statement reveals gaps in contributions, this may indicate periods where your employer did not remit payments or where voluntary contributions were missed. You can use the statement as evidence to follow up with your employer or SHA directly. Our support team can guide you on the dispute process.' },
+            ].map((faq, i) => (
+              <details key={i} className="group card !p-0 overflow-hidden">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-black text-gray-900 hover:text-sha-600 transition-colors">
+                  {faq.q}
+                  <ChevronRight className="w-5 h-5 text-gray-300 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 font-medium leading-relaxed border-t border-gray-50 pt-4">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );

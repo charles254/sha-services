@@ -55,6 +55,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { q: 'Who can I add as a beneficiary on my SHA membership?', a: 'You can add your spouse, biological or legally adopted children under the age of 25, and your parents as dependants on your SHA membership. Each dependant type requires specific supporting documentation.' },
+              { q: 'How many beneficiaries can I add to my SHA account?', a: 'There is no strict limit on the number of dependants you can register. You can add one spouse, multiple children (under 25 years), and both parents. Each beneficiary is covered under your SHA membership.' },
+              { q: 'What documents are needed to add a spouse as a beneficiary?', a: 'To add a spouse, you need their National ID (or passport), your marriage certificate, and your own National ID for verification. For customary marriages, an affidavit or chief\'s letter may be accepted.' },
+              { q: 'Can I remove a beneficiary from my SHA membership?', a: 'Yes. You can remove beneficiaries through our platform. Common reasons include divorce, a child turning 25, or updating records after a parent\'s passing. The update is processed within 24 hours.' },
+              { q: 'Will my beneficiaries retain coverage during the update process?', a: 'Yes. Existing beneficiaries retain their SHA coverage throughout the update process. New dependants become eligible for services once the update is confirmed, typically within 24 hours.' },
+              { q: 'What if my child turns 25 — are they automatically removed?', a: 'Children are not automatically removed when they turn 25, but they become ineligible for coverage as dependants. Children over 25 should register for their own SHA membership independently.' },
+            ].map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+            })),
+          })
+        }}
+      />
       {children}
     </>
   );

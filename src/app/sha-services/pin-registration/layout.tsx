@@ -55,6 +55,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { q: 'Who is eligible to register for a SHA PIN?', a: 'All Kenyan citizens and residents aged 18 and above are eligible to register as SHA members. This includes employed, self-employed, and unemployed individuals. Dependants (spouse, children under 25, and parents) can be added to an existing membership after registration.' },
+              { q: 'What is the difference between SHA and NHIF?', a: 'SHA (Social Health Authority) replaced NHIF (National Hospital Insurance Fund) as part of Kenya\'s universal health coverage reforms under the Social Health Insurance Act 2023. If you were previously registered with NHIF, your records have been migrated to SHA. New members now register directly under SHA.' },
+              { q: 'What documents do I need for SHA PIN registration?', a: 'You need a valid National ID card or Kenyan passport. The registration form also requires your date of birth, phone number, email address, and employment details. If you are employed, your employer\'s name and details are required for contribution purposes.' },
+              { q: 'How long does it take to receive my SHA member number?', a: 'Through our platform, SHA PIN registration is processed within approximately 2 hours. You will receive your unique SHA member number via SMS and email. This is significantly faster than the in-person process at government offices, which can take several days.' },
+              { q: 'Can I register my family members at the same time?', a: 'The initial registration creates your individual SHA membership. Once you have your member number, you can add dependants (spouse, children, and parents) through our Beneficiary Update service. This is a separate process with its own documentation requirements.' },
+              { q: 'What happens after I get my SHA PIN?', a: 'Once registered, you can access SHA-covered health services at any accredited facility. Your employer (if employed) will begin making monthly contributions through payroll. Self-employed and informal sector workers can make voluntary contributions via M-Pesa.' },
+            ].map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+            })),
+          })
+        }}
+      />
       {children}
     </>
   );

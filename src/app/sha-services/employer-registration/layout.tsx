@@ -55,6 +55,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { q: 'Is SHA employer registration mandatory in Kenya?', a: 'Yes. Under the Social Health Insurance Act 2023, all employers in Kenya are legally required to register with SHA and make monthly contributions on behalf of their employees. Non-compliance can result in penalties.' },
+              { q: 'What documents are required for employer registration?', a: 'You need your business registration certificate (CR12 for companies, or business name certificate), KRA PIN certificate, and the director\'s or owner\'s National ID.' },
+              { q: 'How do I set up SHA payroll deductions after registration?', a: 'Once registered, you receive an SHA employer code which you integrate into your payroll system. Most payroll software in Kenya supports SHA deductions natively.' },
+              { q: 'What are the monthly SHA contribution rates for employers?', a: 'SHA contribution rates are set by the Social Health Insurance Act and are based on a percentage of each employee\'s gross salary. Our agents provide current rate schedules with your employer code.' },
+              { q: 'Can I register a new business that has not yet hired employees?', a: 'Yes. You can register your business with SHA in advance of hiring employees. This ensures you are compliant from day one when you begin employing staff.' },
+              { q: 'What happens if I miss SHA contribution deadlines?', a: 'Late SHA contributions incur penalties as stipulated by the Social Health Insurance Act. Persistent non-compliance may result in your employees losing access to SHA-covered health services.' },
+            ].map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+            })),
+          })
+        }}
+      />
       {children}
     </>
   );

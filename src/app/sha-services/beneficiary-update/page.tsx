@@ -284,6 +284,29 @@ export default function BeneficiaryUpdatePage() {
             </form>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-4xl mx-auto mt-20">
+          <h2 className="text-3xl font-black text-gray-900 mb-8">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Who can I add as a beneficiary on my SHA membership?', a: 'You can add your spouse, biological or legally adopted children under the age of 25, and your parents as dependants on your SHA membership. Each dependant type requires specific supporting documentation — marriage certificate for a spouse, birth certificate for children, and birth certificate or ID showing parentage for parents.' },
+              { q: 'How many beneficiaries can I add to my SHA account?', a: 'There is no strict limit on the number of dependants you can register. You can add one spouse, multiple children (under 25 years), and both parents. Each beneficiary is covered under your SHA membership for health services at accredited facilities across Kenya.' },
+              { q: 'What documents are needed to add a spouse as a beneficiary?', a: 'To add a spouse, you need their National ID (or passport), your marriage certificate, and your own National ID for verification. For customary marriages, an affidavit or chief\'s letter confirming the union may be accepted in place of a formal marriage certificate.' },
+              { q: 'Can I remove a beneficiary from my SHA membership?', a: 'Yes. You can remove beneficiaries through our platform. Common reasons include divorce, a child turning 25, or updating records after a parent\'s passing. Removal requires your National ID and a brief explanation for the change. The update is processed within 24 hours.' },
+              { q: 'Will my beneficiaries retain coverage during the update process?', a: 'Yes. Existing beneficiaries retain their SHA coverage throughout the update process. Adding new beneficiaries does not affect the coverage of those already registered. New dependants become eligible for services once the update is confirmed, typically within 24 hours.' },
+              { q: 'What if my child turns 25 — are they automatically removed?', a: 'Children are not automatically removed when they turn 25, but they become ineligible for coverage as dependants under your membership. It is recommended to update your beneficiary list proactively. Children over 25 should register for their own SHA membership independently.' },
+            ].map((faq, i) => (
+              <details key={i} className="group card !p-0 overflow-hidden">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-black text-gray-900 hover:text-sha-600 transition-colors">
+                  {faq.q}
+                  <ChevronRight className="w-5 h-5 text-gray-300 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 font-medium leading-relaxed border-t border-gray-50 pt-4">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );

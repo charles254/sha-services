@@ -365,6 +365,29 @@ export default function ChangePhonePage() {
             </form>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-4xl mx-auto mt-20">
+          <h2 className="text-3xl font-black text-gray-900 mb-8">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {[
+              { q: 'Why do I need a Police Abstract to change my SHA phone number?', a: 'A Police Abstract serves as official proof that your previous phone number is no longer in your possession or has been compromised. This is required by SHA to protect members from unauthorized changes. You can obtain a Police Abstract from any police station in Kenya — it typically takes 1-2 days to process.' },
+              { q: 'What happens to my old phone number after the change?', a: 'Once the phone number change is processed, your old number is immediately delinked from your SHA account. All future OTPs, notifications, and communication from SHA will be sent to your new number. Your SHA membership number and all benefits remain unchanged.' },
+              { q: 'Can I change my SHA phone number if I lost my SIM card?', a: 'Yes. A lost SIM card is one of the most common reasons for a phone number change. You will need to get a Police Abstract reporting the lost SIM, then submit your National ID and the abstract through our platform. Our agents will process the change within 24 hours.' },
+              { q: 'How will I know my phone number change was successful?', a: 'You will receive a confirmation SMS on your new phone number and an email notification once the change is processed. You can also track the status of your request in real time using the tracking ID provided at submission.' },
+              { q: 'What if my National ID name differs from my SHA registration?', a: 'Your National ID name must match your SHA registration records. If there is a discrepancy, you may need to update your SHA records first. Contact our support team via WhatsApp for guidance on resolving name mismatches before submitting a phone change request.' },
+              { q: 'Can I change my phone number back to the original one later?', a: 'Yes, you can submit another phone number change request at any time. Each change requires a new Police Abstract and the standard Ksh 500 service fee. The same 24-hour processing time applies.' },
+            ].map((faq, i) => (
+              <details key={i} className="group card !p-0 overflow-hidden">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-black text-gray-900 hover:text-sha-600 transition-colors">
+                  {faq.q}
+                  <ChevronRight className="w-5 h-5 text-gray-300 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 font-medium leading-relaxed border-t border-gray-50 pt-4">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );
