@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
   Phone, ShieldCheck, FileText, Users, Building2, ArrowRight,
-  CheckCircle2, Clock, Star, ChevronDown, Zap
+  CheckCircle2, Clock, Star, ChevronDown, Zap, MapPin
 } from 'lucide-react';
 
 const services = [
@@ -360,6 +360,58 @@ export default function HomePage() {
                 </div>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATURED LOCATIONS ────────────────────────────────── */}
+      <section className="py-28 mesh-bg grainy">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16 space-y-4">
+            <div className="badge-green mx-auto w-fit flex items-center gap-2">
+              <MapPin className="w-4 h-4" /> Nationwide Coverage
+            </div>
+            <h2 className="text-5xl font-black text-gray-900">Serving All 47 Counties</h2>
+            <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto">
+              From major cities to rural towns — our certified SHA agents process requests for residents across Kenya.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {[
+              { name: 'Nairobi (Westlands)', slug: 'westlands' },
+              { name: 'Mombasa (Mvita)', slug: 'mvita' },
+              { name: 'Kisumu', slug: 'kisumu' },
+              { name: 'Nakuru', slug: 'nakuru' },
+              { name: 'Eldoret', slug: 'eldoret' },
+              { name: 'Malindi', slug: 'malindi' },
+              { name: 'Voi', slug: 'voi' },
+              { name: 'Isiolo', slug: 'isiolo' },
+              { name: 'Kamukunji', slug: 'kamukunji' },
+              { name: 'Thika', slug: 'thika' },
+              { name: 'Nyeri', slug: 'nyeri' },
+              { name: 'Meru', slug: 'meru' },
+              { name: 'Garissa', slug: 'garissa' },
+              { name: 'Machakos', slug: 'machakos' },
+              { name: 'Naivasha', slug: 'naivasha' },
+            ].map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="group p-4 bg-white border border-gray-100 rounded-2xl hover:border-sha-500 hover:shadow-lg transition-all flex items-center gap-3"
+              >
+                <div className="w-8 h-8 bg-sha-50 rounded-xl flex items-center justify-center group-hover:bg-sha-600 transition-colors flex-shrink-0">
+                  <MapPin className="w-4 h-4 text-sha-600 group-hover:text-white transition-colors" />
+                </div>
+                <span className="font-black text-gray-900 text-sm truncate">{loc.name}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/locations" className="btn-outline inline-flex items-center gap-3">
+              View All 500+ Locations <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
