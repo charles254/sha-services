@@ -20,7 +20,16 @@
       "Bash(taskkill //F //IM node.exe)",
       "mcp__Claude_Preview__preview_start",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://213.199.51.21:8000)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://213.199.51.21:80)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://213.199.51.21:80)",
+      "Bash(grep -v \"^$\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://api.github.com/repos/charles254/digital-cyber-kra)",
+      "Bash(gh repo:*)",
+      "Bash(node -e \"const pkg = require\\(''./package.json''\\); console.log\\(''next:'', pkg.dependencies.next\\)\")",
+      "Bash(grep -l \"export const dynamic\" src/app/*/page.tsx)",
+      "Bash(gh auth:*)",
+      "Bash(ssh root@213.199.51.21 \"a2dissite digitalcyber.conf 2>/dev/null; rm -f /etc/apache2/sites-available/digitalcyber.conf /etc/apache2/sites-enabled/digitalcyber.conf; systemctl reload apache2; docker system prune -f 2>/dev/null; echo ''VPS cleanup done''\")",
+      "WebFetch(domain:shacyberservices.com)",
+      "WebFetch(domain:www.shacyberservices.com)"
     ]
   }
 }

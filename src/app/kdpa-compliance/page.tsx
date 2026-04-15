@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   title: 'KDPA Compliance | Kenya Data Protection Act 2019',
   description: 'How SHA Online Cyber Services complies with the Kenya Data Protection Act 2019. AES-256 encryption, 48hr auto-deletion, your rights, and how to file complaints.',
   alternates: { canonical: '/kdpa-compliance' },
+  openGraph: {
+    title: 'KDPA Compliance | Kenya Data Protection Act 2019',
+    description: 'How SHA Online Cyber Services complies with the Kenya Data Protection Act 2019. AES-256 encryption, 48hr auto-deletion, your rights.',
+    url: 'https://shacyberservices.com/kdpa-compliance',
+    type: 'article',
+    images: ['/og-image.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KDPA Compliance | Kenya Data Protection Act 2019',
+    description: 'How SHA Online Cyber Services complies with the Kenya Data Protection Act 2019. AES-256 encryption, 48hr auto-deletion.',
+  },
 };
 
 export default function KDPACompliancePage() {

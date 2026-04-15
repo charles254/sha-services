@@ -34,6 +34,29 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "SHA Phone Number Change",
+            "description": "Update your SHA-registered phone number online with certified agents. Requires Police Abstract and National ID.",
+            "provider": {
+              "@type": "Organization",
+              "name": "SHA Online Cyber Services Kenya"
+            },
+            "serviceType": "Government Document Update",
+            "datePublished": "2025-01-15",
+            "dateModified": "2026-04-10",
+            "offers": {
+              "@type": "Offer",
+              "price": "500",
+              "priceCurrency": "KES"
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": faqs.map((faq) => ({
               "@type": "Question",

@@ -33,6 +33,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               "name": "SHA Online Cyber Services Kenya"
             },
             "serviceType": "Government Document Update",
+            "datePublished": "2025-01-15",
+            "dateModified": "2026-04-10",
             "offers": {
               "@type": "Offer",
               "price": "400",
