@@ -78,6 +78,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Update SHA Beneficiaries Online",
+            "description": "Add, remove, or update your SHA dependants and beneficiaries online in 24 hours.",
+            "totalTime": "PT24H",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "KES", "value": "400" },
+            "step": [
+              { "@type": "HowToStep", "position": 1, "name": "Visit the website", "text": "Go to shacyberservices.com to access our online SHA services portal." },
+              { "@type": "HowToStep", "position": 2, "name": "Select Beneficiary Update", "text": "Choose the Beneficiary Update service from the available SHA services." },
+              { "@type": "HowToStep", "position": 3, "name": "Provide new beneficiary details", "text": "Submit the details and supporting documents for the dependants you want to add, remove, or update." },
+              { "@type": "HowToStep", "position": 4, "name": "Pay KES 400 via M-Pesa", "text": "Complete the payment of KES 400 using M-Pesa to process your beneficiary update." },
+              { "@type": "HowToStep", "position": 5, "name": "Receive confirmation", "text": "You will receive a confirmation via SMS and email once your beneficiary update is processed within 24 hours." }
+            ]
+          })
+        }}
+      />
       {children}
     </>
   );

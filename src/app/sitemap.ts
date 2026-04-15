@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const mainRoutes: { path: string; priority: number; changeFrequency: 'daily' | 'weekly' | 'monthly' }[] = [
     { path: '',          priority: 1.0, changeFrequency: 'weekly' },
     { path: '/contact',  priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/about',    priority: 0.7, changeFrequency: 'monthly' },
+    { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/privacy',  priority: 0.4, changeFrequency: 'monthly' },
+    { path: '/terms',    priority: 0.4, changeFrequency: 'monthly' },
+    { path: '/kdpa-compliance', priority: 0.4, changeFrequency: 'monthly' },
     { path: '/locations', priority: 0.9, changeFrequency: 'weekly' },
     { path: '/track',    priority: 0.6, changeFrequency: 'weekly' },
     ...services.map((s) => ({ path: `/sha-services/${s}`, priority: 0.9 as number, changeFrequency: 'weekly' as const })),

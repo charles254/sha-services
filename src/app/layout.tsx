@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     title: "SHA Online Cyber Services | Skip the Queues",
     description: "Certified agents handle your SHA services online. Phone change, PIN registration, statements & more. 10,000+ requests processed.",
     images: ["/og-image.jpg"],
+    site: "@shacyberke",
   },
   verification: {
     google: "F9kshl_Ly57IwOzG1oLS4Whh8bybSmGbP3GqlKske70",

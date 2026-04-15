@@ -78,6 +78,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Register as an SHA Employer Online",
+            "description": "Register your business as an SHA employer and get your employer code in 48 hours.",
+            "totalTime": "PT48H",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "KES", "value": "800" },
+            "step": [
+              { "@type": "HowToStep", "position": 1, "name": "Visit the website", "text": "Go to shacyberservices.com to access our online SHA services portal." },
+              { "@type": "HowToStep", "position": 2, "name": "Select Employer Registration", "text": "Choose the Employer Registration service from the available SHA services." },
+              { "@type": "HowToStep", "position": 3, "name": "Submit company details", "text": "Provide your business registration certificate, KRA PIN certificate, and director's National ID." },
+              { "@type": "HowToStep", "position": 4, "name": "Pay KES 800 via M-Pesa", "text": "Complete the payment of KES 800 using M-Pesa to process your employer registration." },
+              { "@type": "HowToStep", "position": 5, "name": "Receive registration certificate", "text": "Your SHA employer code and registration certificate will be delivered within 48 hours." }
+            ]
+          })
+        }}
+      />
       {children}
     </>
   );

@@ -78,6 +78,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Register for a SHA PIN Online",
+            "description": "Register as a new SHA member and get your PIN in 2 hours through our certified agent platform.",
+            "totalTime": "PT2H",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "KES", "value": "300" },
+            "step": [
+              { "@type": "HowToStep", "position": 1, "name": "Visit the website", "text": "Go to shacyberservices.com to access our online SHA services portal." },
+              { "@type": "HowToStep", "position": 2, "name": "Select PIN Registration", "text": "Choose the PIN Registration service from the available SHA services." },
+              { "@type": "HowToStep", "position": 3, "name": "Pay KES 300 via M-Pesa", "text": "Complete the payment of KES 300 using M-Pesa to process your registration." },
+              { "@type": "HowToStep", "position": 4, "name": "Receive your SHA PIN via email", "text": "Your SHA PIN and member number will be delivered to your email within 2 hours." }
+            ]
+          })
+        }}
+      />
       {children}
     </>
   );

@@ -78,6 +78,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Get Your SHA Contribution Statement Online",
+            "description": "Download your official SHA contribution statement delivered to your email in 1 hour.",
+            "totalTime": "PT1H",
+            "estimatedCost": { "@type": "MonetaryAmount", "currency": "KES", "value": "200" },
+            "step": [
+              { "@type": "HowToStep", "position": 1, "name": "Visit the website", "text": "Go to shacyberservices.com to access our online SHA services portal." },
+              { "@type": "HowToStep", "position": 2, "name": "Select Contribution Statement", "text": "Choose the Contribution Statement service from the available SHA services." },
+              { "@type": "HowToStep", "position": 3, "name": "Pay KES 200 via M-Pesa", "text": "Complete the payment of KES 200 using M-Pesa to process your request." },
+              { "@type": "HowToStep", "position": 4, "name": "Download your statement", "text": "Your official SHA contribution statement will be delivered to your email as a PDF within 1 hour." }
+            ]
+          })
+        }}
+      />
       {children}
     </>
   );
