@@ -91,7 +91,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               areaServed: "KE",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+254-719-628-275",
+                telephone: "+254-797-201-411",
                 contactType: "customer service",
                 availableLanguage: ["en", "sw"],
               },
@@ -148,7 +148,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               name: "SHA Online Cyber Services Kenya",
               image: "https://shacyberservices.com/og-image.jpg",
               url: "https://shacyberservices.com",
-              telephone: "+254-719-628-275",
+              telephone: "+254-797-201-411",
               priceRange: "KES 200-800",
               address: {
                 "@type": "PostalAddress",

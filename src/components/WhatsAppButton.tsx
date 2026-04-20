@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ── UPDATE THIS to your real WhatsApp number (format: 2547XXXXXXXX) ──────────
-const WHATSAPP_PHONE = '254719628275';
+const WHATSAPP_PHONE = '254797201411';
 const WHATSAPP_MSG   = encodeURIComponent(
   'Hello! I need help with my SHA services. Please assist me.'
 );

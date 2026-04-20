@@ -103,7 +103,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-black text-gray-900 mb-4">9. Contact</h2>
             <p className="text-gray-600 leading-relaxed">
-              Questions about these terms? Contact us at <a href="mailto:support@shacyberservices.com" className="text-sha-600 font-bold hover:underline">support@shacyberservices.com</a> or via WhatsApp at <a href="https://wa.me/254719628275" className="text-sha-600 font-bold hover:underline">+254 719 628 275</a>.
+              Questions about these terms? Contact us at <a href="mailto:support@shacyberservices.com" className="text-sha-600 font-bold hover:underline">support@shacyberservices.com</a> or via WhatsApp at <a href="https://wa.me/254797201411" className="text-sha-600 font-bold hover:underline">+254 797 201 411</a>.
             </p>
           </section>
         </div>

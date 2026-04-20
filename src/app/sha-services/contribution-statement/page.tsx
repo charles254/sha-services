@@ -129,12 +129,8 @@ export default function ContributionStatementPage() {
             <form onSubmit={submit} className="space-y-5">
               <div><label className="label"><User className="w-3.5 h-3.5 text-sha-600" />Full Legal Name</label>
                 <input name="fullName" value={form.fullName} onChange={onChange} required placeholder="As registered with SHA" className="input-field" /></div>
-              <div className="grid grid-cols-2 gap-4">
-                <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />SHA / NHIF Number</label>
-                  <input name="shaPin" value={form.shaPin} onChange={onChange} required placeholder="0012345678" className="input-field" /></div>
-                <div><label className="label">National ID No.</label>
-                  <input name="idNumber" value={form.idNumber} onChange={onChange} required placeholder="e.g. 12345678" className="input-field" /></div>
-              </div>
+              <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />ID Number</label>
+                <input name="idNumber" value={form.idNumber} onChange={onChange} required placeholder="e.g. 12345678" className="input-field" /></div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="label">Phone Number</label>
                   <input name="phone" value={form.phone} onChange={onChange} type="tel" required placeholder="07XX XXX XXX" className="input-field" /></div>

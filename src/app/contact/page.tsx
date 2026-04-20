@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact Us | WhatsApp, Phone & Email Support',
-  description: 'Get help with your SHA request — reach our certified agents via WhatsApp (+254 719 628 275), email, or phone. Mon-Sat 8am-6pm. Average response time: 2 hours.',
+  description: 'Get help with your SHA request — reach our certified agents via WhatsApp (+254 797 201 411), email, or phone. Mon-Sat 8am-6pm. Average response time: 2 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact SHA Online Cyber Services | Get Help Now',
@@ -33,7 +33,7 @@ export default function ContactPage() {
             "mainEntity": {
               "@type": "Organization",
               "name": "SHA Online Cyber Services Kenya",
-              "telephone": "+254-719-628-275",
+              "telephone": "+254-797-201-411",
               "email": "support@shacyberservices.com",
               "address": {
                 "@type": "PostalAddress",
@@ -63,13 +63,13 @@ export default function ContactPage() {
             <div className="bg-sha-900 rounded-[2.5rem] p-8 text-white border-0 shadow-2xl shadow-sha-900/30">
               <h3 className="text-2xl font-black mb-8">Direct Contact</h3>
               <div className="space-y-6">
-                <a href="https://wa.me/254719628275" className="flex items-start gap-4 group">
+                <a href="https://wa.me/254797201411" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-green-500 transition-colors">
                     <MessageSquare className="w-6 h-6 text-sha-400 group-hover:text-white" />
                   </div>
                   <div>
                     <p className="font-black text-white">WhatsApp Support</p>
-                    <p className="text-sha-300 text-sm font-medium">+254 719 628 275</p>
+                    <p className="text-sha-300 text-sm font-medium">+254 797 201 411</p>
                     <p className="text-[10px] text-green-400 font-black uppercase tracking-widest mt-1 underline">Chat Now</p>
                   </div>
                 </a>

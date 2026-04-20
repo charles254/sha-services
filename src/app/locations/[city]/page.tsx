@@ -174,7 +174,7 @@ export default async function LocationPage({ params }: Props) {
             "name": `SHA Online Cyber Services ${location.name}`,
             "description": `Professional SHA services for residents of ${location.name}, ${location.region}. Phone change, PIN registration, contribution statements, beneficiary updates, and employer registration.`,
             "url": `https://shacyberservices.com/locations/${city}`,
-            "telephone": "+254-719-628-275",
+            "telephone": "+254-797-201-411",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": location.name,

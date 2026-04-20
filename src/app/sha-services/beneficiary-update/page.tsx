@@ -48,7 +48,7 @@ export default function BeneficiaryUpdatePage() {
 
   const v1 = () => {
     if (!form.fullName.trim()) return 'Full name required.';
-    if (!form.shaPin.trim()) return 'SHA number required.';
+    if (!form.idNumber.trim()) return 'ID number required.';
     if (!form.phone.trim()) return 'Phone required.';
     if (!form.email.includes('@')) return 'Valid email required.';
     if (beneficiaries.some(b => !b.name.trim())) return 'All beneficiary names required.';
@@ -150,12 +150,8 @@ export default function BeneficiaryUpdatePage() {
                     </div>
                     <div><label className="label"><User className="w-3.5 h-3.5 text-sha-600" />Your Full Name</label>
                       <input name="fullName" value={form.fullName} onChange={onChange} required placeholder="Your legal name" className="input-field" /></div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />SHA Number</label>
-                        <input name="shaPin" value={form.shaPin} onChange={onChange} required placeholder="0012345678" className="input-field" /></div>
-                      <div><label className="label">National ID</label>
-                        <input name="idNumber" value={form.idNumber} onChange={onChange} required placeholder="e.g. 12345678" className="input-field" /></div>
-                    </div>
+                    <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />ID Number</label>
+                      <input name="idNumber" value={form.idNumber} onChange={onChange} required placeholder="e.g. 12345678" className="input-field" /></div>
                     <div className="grid grid-cols-2 gap-4">
                       <div><label className="label">Phone</label>
                         <input name="phone" value={form.phone} onChange={onChange} type="tel" required placeholder="07XX XXX XXX" className="input-field" /></div>
@@ -241,7 +237,7 @@ export default function BeneficiaryUpdatePage() {
                   <motion.div key="s3" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-5">
                     <p className="text-xs font-black text-gray-900 uppercase tracking-widest">Review Submission</p>
                     <div className="space-y-2">
-                      {[['Member Name', form.fullName], ['SHA Number', form.shaPin], ['Phone', form.phone]].map(([l, v]) => (
+                      {[['Member Name', form.fullName], ['ID Number', form.idNumber], ['Phone', form.phone]].map(([l, v]) => (
                         <div key={l} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
                           <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{l}</span>
                           <span className="text-sm font-black text-gray-800">{v}</span>

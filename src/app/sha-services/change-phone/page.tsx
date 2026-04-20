@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone, Upload, CheckCircle2, AlertCircle, Loader2, ShieldCheck,
-  ArrowRight, ChevronRight, FileText, Info, X, Lock, User, Mail,
+  ArrowRight, ChevronRight, FileText, X, Lock, User, Mail,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,25 +19,23 @@ export default function ChangePhonePage() {
   const [submitted, setSubmitted] = useState(false);
   const [trackingId, setTrackingId] = useState('');
   const [idDoc, setIdDoc] = useState<UploadedFile | null>(null);
-  const [abstractDoc, setAbstractDoc] = useState<UploadedFile | null>(null);
   const [form, setForm] = useState({
     fullName: '', email: '', shaPin: '',
     oldPhone: '', newPhone: '', confirmPhone: '',
   });
 
   const idRef = useRef<HTMLInputElement>(null);
-  const absRef = useRef<HTMLInputElement>(null);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
     setError(null);
   };
 
-  const uploadFile = async (e: React.ChangeEvent<HTMLInputElement>, type: 'id' | 'abstract') => {
+  const uploadFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 5 * 1024 * 1024) { setError('File too large. Max 5MB.'); return; }
-    setUploading(type);
+    setUploading('id');
     setError(null);
     try {
       const res = await fetch(`/api/upload?filename=${encodeURIComponent(file.name)}&fileType=${encodeURIComponent(file.type)}`);
@@ -51,8 +49,7 @@ export default function ChangePhonePage() {
         const r = await fetch('/api/upload', { method: 'POST', body: fd });
         url = (await r.json()).url || '';
       }
-      const obj = { name: file.name, url, size: file.size };
-      if (type === 'id') setIdDoc(obj); else setAbstractDoc(obj);
+      setIdDoc({ name: file.name, url, size: file.size });
     } catch { setError('Upload failed. Please try again.'); }
     finally { setUploading(null); }
   };
@@ -60,14 +57,13 @@ export default function ChangePhonePage() {
   const v1 = () => {
     if (!form.fullName.trim()) return 'Full name is required.';
     if (!form.email.includes('@')) return 'Valid email is required.';
-    if (!form.shaPin.trim()) return 'SHA member number is required.';
+    if (!form.shaPin.trim()) return 'ID number is required.';
     if (!form.newPhone.trim()) return 'New phone number is required.';
     if (form.newPhone !== form.confirmPhone) return 'Phone numbers do not match.';
     return null;
   };
   const v2 = () => {
     if (!idDoc) return 'Please upload your National ID.';
-    if (!abstractDoc) return 'Please upload your Police Abstract.';
     return null;
   };
 
@@ -85,7 +81,7 @@ export default function ChangePhonePage() {
       const res = await fetch('/api/sha/change-phone', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, idDocUrl: idDoc?.url, abstractDocUrl: abstractDoc?.url }),
+        body: JSON.stringify({ ...form, idDocUrl: idDoc?.url }),
       });
       const data = await res.json();
       setTrackingId(data.trackingId || `SHA-PH-${Date.now().toString(36).toUpperCase()}`);
@@ -139,7 +135,7 @@ export default function ChangePhonePage() {
             "serviceType": "Government Document Update",
             "offers": {
               "@type": "Offer",
-              "price": "500",
+              "price": "200",
               "priceCurrency": "KES"
             }
           })
@@ -154,7 +150,7 @@ export default function ChangePhonePage() {
             "name": "How to change SHA Phone Number",
             "step": [
               { "@type": "HowToStep", "text": "Fill in your full name, email and SHA PIN." },
-              { "@type": "HowToStep", "text": "Upload your National ID and Police Abstract." },
+              { "@type": "HowToStep", "text": "Upload your National ID." },
               { "@type": "HowToStep", "text": "Submit and pay the processing fee via M-Pesa." }
             ]
           })
@@ -182,11 +178,11 @@ export default function ChangePhonePage() {
               </p>
             </div>
             <div className="inline-flex items-baseline gap-2">
-              <span className="text-3xl font-black">Ksh 500</span>
+              <span className="text-3xl font-black">Ksh 200</span>
               <span className="text-sm text-gray-400 font-bold">· Processed in 24hrs</span>
             </div>
             <div className="space-y-3">
-              {['Police Abstract or Sworn Affidavit Required','Certified SHA Agent Handles Submission',
+              {['Certified SHA Agent Handles Submission',
                 'SMS & Email Confirmation Sent','24-Hour Request Tracking Available',
                 'Documents Deleted After 48hrs'].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-sm font-bold text-gray-500">
@@ -203,12 +199,6 @@ export default function ChangePhonePage() {
               </div>
               <p className="text-sm text-gray-500 leading-relaxed">
                 All documents are AES-256 encrypted and deleted after 48 hours. KDPA 2019 compliant.
-              </p>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-200">
-              <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-amber-800 font-medium leading-relaxed">
-                A <strong>Police Abstract</strong> or Sworn Affidavit is mandatory for online SHA phone changes.
               </p>
             </div>
           </div>
@@ -238,8 +228,8 @@ export default function ChangePhonePage() {
                       <input name="fullName" value={form.fullName} onChange={onChange} required placeholder="e.g. John Kamau Mwangi" className="input-field" /></div>
                     <div><label className="label"><Mail className="w-3.5 h-3.5 text-sha-600" />Email Address</label>
                       <input name="email" value={form.email} onChange={onChange} type="email" required placeholder="e.g. john@gmail.com" className="input-field" /></div>
-                    <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />SHA / NHIF Member Number</label>
-                      <input name="shaPin" value={form.shaPin} onChange={onChange} required placeholder="e.g. 0012345678" className="input-field" /></div>
+                    <div><label className="label"><Lock className="w-3.5 h-3.5 text-sha-600" />ID Number</label>
+                      <input name="shaPin" value={form.shaPin} onChange={onChange} required placeholder="e.g. 12345678" className="input-field" /></div>
                     <div className="grid grid-cols-2 gap-4">
                       <div><label className="label"><Phone className="w-3.5 h-3.5 text-gray-400" />Old Phone <span className="text-[9px] text-gray-400 normal-case">(if known)</span></label>
                         <input name="oldPhone" value={form.oldPhone} onChange={onChange} type="tel" placeholder="07XX XXX XXX" className="input-field" /></div>
@@ -265,7 +255,7 @@ export default function ChangePhonePage() {
                     </div>
                     {/* ID Upload */}
                     <div><label className="label"><FileText className="w-3.5 h-3.5 text-sha-600" />National ID — Front &amp; Back <span className="text-red-500">*</span></label>
-                      <input ref={idRef} type="file" accept="image/*,.pdf" className="hidden" onChange={e => uploadFile(e, 'id')} />
+                      <input ref={idRef} type="file" accept="image/*,.pdf" className="hidden" onChange={uploadFile} />
                       {idDoc ? (
                         <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between p-4 bg-white rounded-2xl border border-green-200">
                           <div className="flex items-center gap-3"><div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center"><CheckCircle2 className="w-5 h-5 text-green-600" /></div>
@@ -277,24 +267,6 @@ export default function ChangePhonePage() {
                         <button type="button" onClick={() => idRef.current?.click()} disabled={uploading === 'id'} className="drop-zone w-full">
                           {uploading === 'id' ? <Loader2 className="w-10 h-10 text-sha-600 animate-spin mx-auto mb-3" /> : <Upload className="w-10 h-10 text-gray-300 group-hover:text-sha-500 mx-auto mb-3 transition-colors" />}
                           <p className="text-sm font-black text-gray-700">{uploading === 'id' ? 'Uploading…' : 'Click to Upload National ID'}</p>
-                          <p className="text-[10px] text-gray-400 mt-1 font-bold uppercase tracking-widest">JPG, PNG or PDF · Max 5MB</p>
-                        </button>
-                      )}
-                    </div>
-                    {/* Abstract Upload */}
-                    <div><label className="label"><FileText className="w-3.5 h-3.5 text-amber-600" />Police Abstract / Sworn Affidavit <span className="text-red-500">*</span></label>
-                      <input ref={absRef} type="file" accept="image/*,.pdf" className="hidden" onChange={e => uploadFile(e, 'abstract')} />
-                      {abstractDoc ? (
-                        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between p-4 bg-white rounded-2xl border border-green-200">
-                          <div className="flex items-center gap-3"><div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center"><CheckCircle2 className="w-5 h-5 text-green-600" /></div>
-                            <div><p className="text-sm font-black text-gray-800 truncate max-w-[180px]">{abstractDoc.name}</p><p className="text-[10px] text-gray-400">{(abstractDoc.size/1024).toFixed(0)} KB</p></div>
-                          </div>
-                          <button type="button" onClick={() => setAbstractDoc(null)} className="p-2 text-gray-300 hover:text-red-500 transition-colors"><X className="w-4 h-4" /></button>
-                        </motion.div>
-                      ) : (
-                        <button type="button" onClick={() => absRef.current?.click()} disabled={uploading === 'abstract'} className="drop-zone-amber w-full">
-                          {uploading === 'abstract' ? <Loader2 className="w-10 h-10 text-amber-500 animate-spin mx-auto mb-3" /> : <FileText className="w-10 h-10 text-amber-300 mx-auto mb-3" />}
-                          <p className="text-sm font-black text-gray-700">{uploading === 'abstract' ? 'Uploading…' : 'Click to Upload Police Abstract'}</p>
                           <p className="text-[10px] text-gray-400 mt-1 font-bold uppercase tracking-widest">JPG, PNG or PDF · Max 5MB</p>
                         </button>
                       )}
@@ -313,7 +285,7 @@ export default function ChangePhonePage() {
                   <motion.div key="s3" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} transition={{ duration: 0.25 }} className="space-y-5">
                     <p className="text-xs font-black text-gray-900 uppercase tracking-widest">Review Your Details</p>
                     <div className="space-y-3">
-                      {[['Full Name', form.fullName], ['Email', form.email], ['SHA Number', form.shaPin],
+                      {[['Full Name', form.fullName], ['Email', form.email], ['ID Number', form.shaPin],
                         ['Old Phone', form.oldPhone || '—'], ['New Phone', form.newPhone]].map(([l, v]) => (
                         <div key={l} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
                           <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">{l}</span>
@@ -323,7 +295,7 @@ export default function ChangePhonePage() {
                     </div>
                     <div className="p-5 bg-gray-50 rounded-2xl space-y-2">
                       <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">Attached Documents</p>
-                      {[['National ID', idDoc?.name], ['Police Abstract', abstractDoc?.name]].map(([t, n]) => (
+                      {[['National ID', idDoc?.name]].map(([t, n]) => (
                         <div key={t} className="flex items-center gap-3"><CheckCircle2 className="w-4 h-4 text-green-500" />
                           <span className="text-sm font-bold text-gray-700 flex-1">{n}</span>
                           <span className="text-[9px] text-gray-400 uppercase font-black">{t}</span>
@@ -332,12 +304,12 @@ export default function ChangePhonePage() {
                     </div>
                     <div className="p-6 bg-sha-50/60 rounded-3xl border border-sha-500/10 space-y-3">
                       <div className="flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase">
-                        <span>Service Fee</span><span>Ksh 500</span>
+                        <span>Service Fee</span><span>Ksh 200</span>
                       </div>
                       <div className="h-px bg-sha-500/10" />
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-black text-gray-900">Total Payable</span>
-                        <span className="text-xl font-black text-sha-700">Ksh 500</span>
+                        <span className="text-xl font-black text-sha-700">Ksh 200</span>
                       </div>
                       <p className="text-[10px] text-gray-400">Payment via M-Pesa after submission. KDPA Compliant.</p>
                     </div>
@@ -371,12 +343,11 @@ export default function ChangePhonePage() {
           <h2 className="text-3xl font-black text-gray-900 mb-8">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {[
-              { q: 'Why do I need a Police Abstract to change my SHA phone number?', a: 'A Police Abstract serves as official proof that your previous phone number is no longer in your possession or has been compromised. This is required by SHA to protect members from unauthorized changes. You can obtain a Police Abstract from any police station in Kenya — it typically takes 1-2 days to process.' },
               { q: 'What happens to my old phone number after the change?', a: 'Once the phone number change is processed, your old number is immediately delinked from your SHA account. All future OTPs, notifications, and communication from SHA will be sent to your new number. Your SHA membership number and all benefits remain unchanged.' },
-              { q: 'Can I change my SHA phone number if I lost my SIM card?', a: 'Yes. A lost SIM card is one of the most common reasons for a phone number change. You will need to get a Police Abstract reporting the lost SIM, then submit your National ID and the abstract through our platform. Our agents will process the change within 24 hours.' },
+              { q: 'Can I change my SHA phone number if I lost my SIM card?', a: 'Yes. A lost SIM card is one of the most common reasons for a phone number change. Simply submit your National ID through our platform and our certified agents will process the change within 24 hours.' },
               { q: 'How will I know my phone number change was successful?', a: 'You will receive a confirmation SMS on your new phone number and an email notification once the change is processed. You can also track the status of your request in real time using the tracking ID provided at submission.' },
               { q: 'What if my National ID name differs from my SHA registration?', a: 'Your National ID name must match your SHA registration records. If there is a discrepancy, you may need to update your SHA records first. Contact our support team via WhatsApp for guidance on resolving name mismatches before submitting a phone change request.' },
-              { q: 'Can I change my phone number back to the original one later?', a: 'Yes, you can submit another phone number change request at any time. Each change requires a new Police Abstract and the standard Ksh 500 service fee. The same 24-hour processing time applies.' },
+              { q: 'Can I change my phone number back to the original one later?', a: 'Yes, you can submit another phone number change request at any time. Each change requires the standard Ksh 200 service fee, and the same 24-hour processing time applies.' },
             ].map((faq, i) => (
               <details key={i} className="group card !p-0 overflow-hidden">
                 <summary className="flex items-center justify-between p-6 cursor-pointer font-black text-gray-900 hover:text-sha-600 transition-colors">
