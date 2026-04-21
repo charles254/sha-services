@@ -8,7 +8,7 @@ export const SHA_SERVICES: Record<string, { slug: string; name: string; descript
     slug: 'sha-change-phone',
     name: 'SHA Phone Number Change',
     description: 'Update your registered SHA/NHIF phone number securely via certified agents.',
-    price: 500,
+    price: 200,
   },
   'pin-registration': {
     slug: 'sha-pin-registration',
