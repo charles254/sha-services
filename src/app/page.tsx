@@ -9,7 +9,7 @@ const services = [
     icon: Phone,
     title: 'Change Phone Number',
     desc: 'Update your SHA-registered phone number online. Required: Police Abstract + National ID.',
-    price: 500,
+    price: 200,
     href: '/sha-services/change-phone',
     time: '24 hrs',
     color: 'bg-green-50 text-green-700 border-green-200',
